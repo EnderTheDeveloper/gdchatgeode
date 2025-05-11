@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const CLEAR-KEY = process.env.CLEAR_KEY;
 app.use(cors());
 app.use(express.json());
 
@@ -16,7 +16,7 @@ app.post("/send", (req, res) => {
   res.send({ status: "ok" });
 });
 app.post("/clear", (req, res) => {
-  if (req.body.secret !== "clear-key") {
+  if (req.body.secret !== "CLEAR_KEY") {
     return res.status(403).send("Forbidden");
   }
   messages = [];
