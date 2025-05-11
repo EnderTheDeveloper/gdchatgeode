@@ -15,7 +15,13 @@ app.post("/send", (req, res) => {
   if (messages.length > 50) messages.shift();
   res.send({ status: "ok" });
 });
-
+app.post("/clear", (req, res) => {
+  if (req.body.secret !== "your-secret-key") {
+    return res.status(403).send("Forbidden");
+  }
+  messages = [];
+  res.send({ status: "cleared" });
+});
 app.get("/messages", (req, res) => {
   res.json(messages);
 });
