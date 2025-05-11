@@ -16,7 +16,7 @@ app.post("/send", (req, res) => {
   res.send({ status: "ok" });
 });
 app.post("/clear", (req, res) => {
-  if (req.body.secret !== "your-secret-key") {
+  if (req.body.secret !== "clear-key") {
     return res.status(403).send("Forbidden");
   }
   messages = [];
